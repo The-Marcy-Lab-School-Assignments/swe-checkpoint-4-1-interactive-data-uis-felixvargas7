@@ -4,9 +4,9 @@ export const renderProducts = (products) => {
   const productCount = document.querySelector("#product-count");
 
   productsList.innerHTML = "";
-  productCount.textContent = products.data.products.length;
+  productCount.textContent = products.length;
 
-  products.data.products.forEach((product) => {
+  products.forEach((product) => {
     // Create content
     const li = document.createElement("li");
     li.dataset.productId = product.id;
@@ -31,15 +31,23 @@ export const renderProductDetails = (product) => {
   const detailsSection = document.querySelector("#product-details");
   detailsSection.classList.remove("hidden");
 
+  //   const productDetails = document.querySelector("#product-details");
   const productTitle = document.querySelector("#product-title");
   const productThumbnail = document.querySelector("#product-thumbnail");
   const productPrice = document.querySelector("#product-price");
   const productDescription = document.querySelector("#product-description");
   const productRating = document.querySelector("#product-rating");
 
-  productTitle.createElement("h2");
-  productThumbnail.createElement("img");
-  productPrice.createElement("p");
-  productDescription.createElement("p");
-  productRating.createElement("p");
+  //   productDetails.createElement("section");
+  //   productTitle.createElement("h2");
+  //   productThumbnail.createElement("img");
+  //   productPrice.createElement("p");
+  //   productDescription.createElement("p");
+  //   productRating.createElement("p");
+  productTitle.textContent = product.title;
+  productThumbnail.src = product.thumbnail;
+  productThumbnail.alt = product.title;
+  productPrice.textContent = product.price;
+  productDescription.textContent = product.description;
+  productRating.textContent = product.rating;
 };

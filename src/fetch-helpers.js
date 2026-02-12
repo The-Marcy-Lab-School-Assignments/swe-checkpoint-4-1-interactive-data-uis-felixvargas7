@@ -9,7 +9,7 @@ export const getProducts = () => {
       return response.json();
     })
     .then((data) => {
-      return { data, error: null };
+      return { data: data.products, error: null };
     })
     .catch((error) => {
       console.error(error.message);
@@ -34,4 +34,17 @@ export const getProductById = (id) => {
     });
 };
 
-export const searchProducts = (query) => {};
+export const searchProducts = async (query) => {
+  try {
+    const response = await fetch(
+      `https://dummyjson.com/products/search?q=${query}`,
+    );
+    if (!response.ok) {
+      throw new Error("Failed to search products.");
+    }
+    const data = await response.json();
+    return { data: data.products, error: null };
+  } catch (error) {
+    return { data: null, error };
+  }
+};
